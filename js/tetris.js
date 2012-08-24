@@ -30,7 +30,7 @@ function newShape() {
         for ( var x = 0; x < 4; ++x ) {
             var i = 4 * y + x;
             if ( typeof shape[ i ] != 'undefined' && shape[ i ] ) {
-                current[ y ][ x ] = id + 1;
+                current[ y ][ x ] = shape[ i ];
             }
             else {
                 current[ y ][ x ] = 0;
@@ -51,12 +51,17 @@ function init() {
 }
 
 function tick() {
+    if(is_end())
+        return
+
     if ( valid( 0, 1 ) ) {
         ++currentY;
     }
     else {
         freeze();
         clearLines();
+        if(is_end())
+            return
         newShape();
     }
 }
@@ -127,6 +132,15 @@ function keyPress( key ) {
             }
             break;
     }
+}
+
+function is_end(){
+    for ( var x = 0; x < COLS; ++x ) {
+        if( board[0][x] != 0){
+            return true;
+        }
+    }
+    return false;
 }
 
 function valid( offsetX, offsetY, newCurrent ) {
