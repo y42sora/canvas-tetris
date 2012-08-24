@@ -20,6 +20,8 @@ var colors = [
     '#F25022', '#7FBA00', '#00A4EF', '#FFB900'
 ];
 
+var end_flag = false;
+
 function newShape() {
     var id = Math.floor( Math.random() * shapes.length );
     var shape = shapes[ id ];
@@ -51,7 +53,7 @@ function init() {
 }
 
 function tick() {
-    if(is_end())
+    if(end_flag)
         return
 
     if ( valid( 0, 1 ) ) {
@@ -137,6 +139,7 @@ function keyPress( key ) {
 function is_end(){
     for ( var x = 0; x < COLS; ++x ) {
         if( board[0][x] != 0){
+            end_flag = true;
             return true;
         }
     }
