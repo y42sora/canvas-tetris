@@ -62,8 +62,10 @@ function tick() {
     else {
         freeze();
         clearLines();
-        if(is_end())
-            return
+        if(is_end()){
+            ending();
+            return;
+        }
         newShape();
     }
 }
@@ -139,11 +141,15 @@ function keyPress( key ) {
 function is_end(){
     for ( var x = 0; x < COLS; ++x ) {
         if( board[0][x] != 0){
-            end_flag = true;
             return true;
         }
     }
     return false;
+}
+
+function ending () {
+    document.getElementById("end").src= "BSOD.png";
+    end_flag = true;
 }
 
 function valid( offsetX, offsetY, newCurrent ) {
