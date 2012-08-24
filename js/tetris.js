@@ -22,8 +22,7 @@ var colors = [
 
 var end_flag = false;
 
-function newShape() {
-    var id = Math.floor( Math.random() * shapes.length );
+function makeShape (id) {
     var shape = shapes[ id ];
 
     current = [];
@@ -41,6 +40,11 @@ function newShape() {
     }
     currentX = 5;
     currentY = 0;
+}
+
+function newShape() {
+    var id = Math.floor( Math.random() * shapes.length );
+    makeShape(id);
 }
 
 function init() {
@@ -63,7 +67,7 @@ function tick() {
         freeze();
         clearLines();
         if(is_end()){
-            setTimeout(ending, 1000);
+            setTimeout(ending, 500);
             return;
         }
         newShape();
@@ -180,5 +184,5 @@ function valid( offsetX, offsetY, newCurrent ) {
 }
 
 init();
-newShape();
+makeShape(3);
 setInterval( tick, 250 );
