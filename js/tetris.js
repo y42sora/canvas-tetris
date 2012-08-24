@@ -63,7 +63,7 @@ function tick() {
         freeze();
         clearLines();
         if(is_end()){
-            ending();
+            setTimeout(ending, 1000);
             return;
         }
         newShape();
@@ -141,6 +141,7 @@ function keyPress( key ) {
 function is_end(){
     for ( var x = 0; x < COLS; ++x ) {
         if( board[0][x] != 0){
+            end_flag = true;
             return true;
         }
     }
@@ -148,8 +149,10 @@ function is_end(){
 }
 
 function ending () {
+    canvas = document.getElementById("tetris")
+    canvas.parentNode.removeChild(canvas)
+
     document.getElementById("end").src= "BSOD.png";
-    end_flag = true;
 }
 
 function valid( offsetX, offsetY, newCurrent ) {

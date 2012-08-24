@@ -1,4 +1,4 @@
-var canvas = document.getElementsByTagName( 'canvas' )[ 0 ];
+var canvas = document.getElementById("tetris");
 var ctx = canvas.getContext( '2d' );
 var W = 300, H = 600;
 var BLOCK_W = W / COLS, BLOCK_H = H / ROWS;
@@ -21,6 +21,9 @@ function render() {
         }
     }
 
+    if(end_flag)
+        return;
+    
     for ( var y = 0; y < 4; ++y ) {
         for ( var x = 0; x < 4; ++x ) {
             if ( current[ y ][ x ] ) {
