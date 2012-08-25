@@ -1,10 +1,8 @@
-A very simple HTML5 version of Tetris, for educational purposes, made in 45 minutes.
-
-Watch the making-of timelapse:
-http://www.youtube.com/watch?v=GQTZ_TPxJhM
+Microsoft Logo Tetris
 
 Play:
-http://dionyziz.logimus.com/tetris/
+http://lab.y42sora.com/microsout_tetris/
+
 
 License
 =======
